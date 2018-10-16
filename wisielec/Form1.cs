@@ -12,7 +12,9 @@ namespace wisielec
 {
     public partial class Form1 : Form
     {
+        string slowo;
         public Form1()
+
         {
             InitializeComponent();
             losuj_slowo();
@@ -31,7 +33,7 @@ namespace wisielec
         private void losuj_slowo()
 
         {
-            string slowo;
+            
             string[] slowa = {"krokusy", "liliput", "marchew", "selerek", "klakier", "krakers" };
             int ile_slow = slowa.Length;
             Random gen = new Random();

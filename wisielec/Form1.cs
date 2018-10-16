@@ -15,6 +15,7 @@ namespace wisielec
         public Form1()
         {
             InitializeComponent();
+            losuj_slowo();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -26,5 +27,22 @@ namespace wisielec
         {
 
         }
+
+        private void losuj_slowo()
+
+        {
+            string slowo;
+            string[] slowa = {"krokusy", "liliput", "marchew", "selerek", "klakier", "krakers" };
+            int ile_slow = slowa.Length;
+            Random gen = new Random();
+            int index_slowa = gen.Next(0, ile_slow);
+            slowo = slowa[index_slowa];
+            label1.Text = Convert.ToString(slowo[0]);
+            label7.Text = Convert.ToString(slowo[6]);
+
+
+        }
+
+
     }
 }

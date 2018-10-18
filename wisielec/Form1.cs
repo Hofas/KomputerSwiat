@@ -14,12 +14,22 @@ namespace wisielec
     {
         string slowo;
         int ile_pudel = 0;
+        
+
+        private void Wygrana()
+        {
+            if (label2.Text != "_" && label3.Text != "_" && label4.Text != "_" && label5.Text != "_" && label6.Text != "_")
+            { pictureBox1.Image = wisielec.Properties.Resources.w_win;
+                button2.Visible = true;
+            }
+        }
 
         public Form1()
 
         {
             InitializeComponent();
             losuj_slowo();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -29,34 +39,48 @@ namespace wisielec
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string litera = textBox1.Text;
-            bool czy_trafiony = false;
-            int gdzie_trafiony = 0;
-            for (int i = 1; i < 6; i++)
-                
+            if (ile_pudel < 5)
             {
-                if (Convert.ToString(slowo[i]) == litera) 
+                string litera = textBox1.Text;
+                bool czy_trafiony = false;
+                int gdzie_trafiony = 0;
+                for (int i = 1; i < 6; i++)
+
                 {
-                    czy_trafiony = true;
-                    gdzie_trafiony = i;
-                    if (gdzie_trafiony == 1) {label2.Text = litera;}
-                    if (gdzie_trafiony == 2) {label3.Text = litera;}
-                    if (gdzie_trafiony == 3) {label4.Text = litera;}
-                    if (gdzie_trafiony == 4) {label5.Text = litera;}
-                    if (gdzie_trafiony == 5) {label6.Text = litera;}
+                    if (Convert.ToString(slowo[i]) == litera)
+                    {
+                        czy_trafiony = true;
+                        gdzie_trafiony = i;
+                        if (gdzie_trafiony == 1) { label2.Text = litera; }
+                        if (gdzie_trafiony == 2) { label3.Text = litera; }
+                        if (gdzie_trafiony == 3) { label4.Text = litera; }
+                        if (gdzie_trafiony == 4) { label5.Text = litera; }
+                        if (gdzie_trafiony == 5) { label6.Text = litera; }
+                    }
                 }
-            }
-            if (czy_trafiony == false)
+                if (czy_trafiony == false)
 
-            {
-                ile_pudel = ile_pudel + 1;
-                if (ile_pudel == 1) { pictureBox1.Image = wisielec.Properties.Resources.w1; }
-                if (ile_pudel == 2) { pictureBox1.Image = wisielec.Properties.Resources.w2; }
-                if (ile_pudel == 3) { pictureBox1.Image = wisielec.Properties.Resources.w3; }
-                if (ile_pudel == 4) { pictureBox1.Image = wisielec.Properties.Resources.w4; }
-                if (ile_pudel == 5) { pictureBox1.Image = wisielec.Properties.Resources.w5; }
+                {
+                    ile_pudel = ile_pudel + 1;
+                    if (ile_pudel == 1) { pictureBox1.Image = wisielec.Properties.Resources.w1; }
+                    if (ile_pudel == 2) { pictureBox1.Image = wisielec.Properties.Resources.w2; }
+                    if (ile_pudel == 3) { pictureBox1.Image = wisielec.Properties.Resources.w3; }
+                    if (ile_pudel == 4) { pictureBox1.Image = wisielec.Properties.Resources.w4; }
+                    if (ile_pudel == 5) { pictureBox1.Image = wisielec.Properties.Resources.w5; }
 
+                }
+                Wygrana();
             }
+            else { pictureBox1.Image = wisielec.Properties.Resources.w_loose;
+                button2.Visible = true;
+            }
+            textBox1.Text = null;
+            textBox1.Focus();
+
+
+            
+
+
         }
 
         private void losuj_slowo()
@@ -81,6 +105,20 @@ namespace wisielec
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            losuj_slowo();
+            ile_pudel = 0;
+            label2.Text = "_";
+            label3.Text = "_";
+            label4.Text = "_";
+            label5.Text = "_";
+            label6.Text = "_";
+            button2.Visible = false;
+            pictureBox1.Image = null;
 
         }
     }

@@ -29,6 +29,7 @@ namespace wisielec
         {
             InitializeComponent();
             losuj_slowo();
+            this.ActiveControl = textBox1;
             
         }
 
@@ -94,6 +95,7 @@ namespace wisielec
             slowo = slowa[index_slowa];
             label1.Text = Convert.ToString(slowo[0]);
             label7.Text = Convert.ToString(slowo[6]);
+            
 
 
         }
@@ -121,5 +123,13 @@ namespace wisielec
             pictureBox1.Image = null;
 
         }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            { button1_Click(this, new EventArgs());   }
+        }
+
+        
     }
 }

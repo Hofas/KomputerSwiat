@@ -33,6 +33,15 @@ namespace WisielecPH
                 textBox1.Visible = false;
                 length = textBox1.Text.Length;
                 word = textBox1.Text;
+                for (int i = 2; i < length+2; i++)
+                {
+                    var labels = Controls.Find("label" + i, true);
+                    var label = (Label)labels[0];
+
+                    label.Visible = true;
+                }
+                
+                
 
             }
         }

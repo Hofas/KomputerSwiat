@@ -31,6 +31,7 @@ namespace WisielecPH
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) { e.Handled = true; }
             label17.Visible = true;
             
+
             //label17.Text = (e.KeyChar).ToString();
             textBox2.SelectAll();
             
@@ -66,7 +67,20 @@ namespace WisielecPH
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            label17.Text = textBox2.Text;
+            for (int i = 2; i < length + 2; i++)
+            {
+                var labels = Controls.Find("label" + i, true);
+                var label = (Label)labels[0];
+                if (Convert.ToString(word[i - 2]) == Convert.ToString(textBox2.Text)) //jeśli litera znajduje sie w word
+                {
+                    
+                    label.Text = Convert.ToString(word[i - 2]);
+                    label.Visible = true;
+                }
+
+            }
+
+            //label17.Text = textBox2.Text;
         }
     }
 }

@@ -26,28 +26,14 @@ namespace WisielecPH
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) { e.Handled = true; }
            
         }
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) { e.Handled = true; }
-            label17.Visible = true;
-            
-
-            //label17.Text = (e.KeyChar).ToString();
-            textBox2.SelectAll();
-            
-        }
-        [DllImport("user32.dll")]
-        static extern bool HideCaret(IntPtr hWnd);
-
-        
+                
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) {
                 label1.Visible = false;
                 textBox1.Visible = false;
-                textBox2.Visible = true;
-                textBox2.Focus();
-                HideCaret(textBox2.Handle);
+                label29.Visible = true;
+                
                 
                 length = textBox1.Text.Length;
                 word = textBox1.Text;
@@ -58,29 +44,22 @@ namespace WisielecPH
 
                     label.Visible = true;
                 }
-                
-                
-                
+              
 
             }
+            label29.Text = e.KeyCode.ToString();
         }
 
-        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            for (int i = 2; i < length + 2; i++)
-            {
-                var labels = Controls.Find("label" + i, true);
-                var label = (Label)labels[0];
-                if (Convert.ToString(word[i - 2]) == Convert.ToString(textBox2.Text)) //jeśli litera znajduje sie w word
-                {
-                    
-                    label.Text = Convert.ToString(word[i - 2]);
-                    label.Visible = true;
-                }
+            label29.Text = e.KeyCode.ToString();
+        }
 
-            }
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-            //label17.Text = textBox2.Text;
         }
     }
 }

@@ -26,7 +26,11 @@ namespace test_project
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             label1.Text = e.KeyCode.ToString();
-        
+            for (int i = 0; i < 5; i++)
+            {
+                MessageBox.Show(Convert.ToString(i));
+            }
+
         }
     }
 }

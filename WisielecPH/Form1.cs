@@ -13,7 +13,7 @@ namespace WisielecPH
 {
     public partial class Form1 : Form
     {
-        int length;
+        public int length;
         string word;
         public Form1()
         {
@@ -29,37 +29,73 @@ namespace WisielecPH
                 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) {
+            if (e.KeyCode == Keys.Enter && length == 0)
+            {
                 label1.Visible = false;
                 textBox1.Visible = false;
                 label29.Visible = true;
-                
-                
+
+
                 length = textBox1.Text.Length;
                 word = textBox1.Text;
-                for (int i = 2; i < length+2; i++)
+                for (int i = 2; i < length + 2; i++)
                 {
                     var labels = Controls.Find("label" + i, true);
                     var label = (Label)labels[0];
 
                     label.Visible = true;
                 }
-              
+               
 
             }
-            label29.Text = e.KeyCode.ToString();
+
+
+            if (length > 0)
+            {
+                label29.Text = e.KeyCode.ToString();
+                
+
+
+            }
+            
+
+            
+
+            
         }
 
-        
+        private void trafienie()
+        {
+            //if (label29.Visible == true)
+            //{
+            
+                for (int i = 0; i < length; i++)
+                {
+
+                    if (Convert.ToString(word[i]) == Convert.ToString(label29.Text))
+                    {
+                        var labels = Controls.Find("label" + i, true);
+                        var label = (Label)labels[0];
+                        label.Text = label29.Text;
+
+                    }
+
+
+                }
+            //}
+        }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            label29.Text = e.KeyCode.ToString();
+          label29.Text = e.KeyCode.ToString();
+
+            for (int i = 0; i < 2; i++)
+            {
+                MessageBox.Show(Convert.ToString(i));
+
+            }
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
